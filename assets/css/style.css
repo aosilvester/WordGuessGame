@@ -1,6 +1,92 @@
 header {
+    /* border: 3px solid black; */
+    font-family: 'Gochi Hand', cursive;
+    font-size: 40px;
+    text-align: center;
+    color: rgb(243, 158, 31);
+}
+
+.titled {
+    /* border: 3px solid black; */
+    font-size: 30px;
+    text-align: center;
+    margin: auto;
+    /* height: 150px; */
+    display: block;
+    font-family: 'Gochi Hand', cursive;
+    color: rgb(255, 206, 133);
+    background-color: rgb(141, 140, 140);
+    width:  25%;
+    border-radius: 300px;
+    opacity: 0.8;
+}
+
+.winCounter {
     border: 3px solid black;
+    font-size: 25px;
+    text-align: center;
+    margin: auto;
+    height: 40px;
+    display: block;
+    width: 36%;
+    background-color: white;
+    opacity: 0.8;
+}
+
+.guessCounter {
+    border: 3px solid black;
+    font-size: 25px;
+    text-align: center;
+    margin: auto;
+    height: 40px;
+    display: block;
+    width: 36%;
+    background-color: white;
+    opacity: 0.8;
+}
+
+.underScore{
+    border: 3px solid black;
+    font-size: 75px;
+    text-align: center;
+    margin: auto;
+    height: 150px;
+    display: block;
+    width: 66%;
+    background-color: white;
+    opacity: 0.8;
+}
+
+.rightGuess{
+    border: 3px solid black;
+    font-size: 50px;
+    text-align: center;
+    margin: auto;
+    height: 150px;
+    display: block;
+    width: 66%;
+    background-color: white;
+    opacity: 0.8;
 }
 
 
-/* 1:30:29 */
+
+.wrongGuess{
+    border: 3px solid black;
+    font-size: 50px;
+    text-align: center;
+    margin: auto;
+    height: 150px;
+    display: block;
+    width: 66%;
+    background-color: white;
+    opacity: 0.8;
+    overflow: auto;
+    word-wrap: break-word;
+}
+
+
+.container {
+    background-image: url("http://www.supasitthaikitchen.com/wp-content/uploads/2015/11/personal-chef-NYC-Thai-Personal-chef-NYC-Thai-cooking-classes-NYC-Wallpaper.jpg");
+    background-size: 100%;
+}

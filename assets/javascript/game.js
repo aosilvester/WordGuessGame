@@ -1,78 +1,87 @@
     //created an array of words
-    const word = ["knife", "fork", "plates", "fridge", "table", "oven", "sink", "pantry", "chairs", "dish", ""]
+    const word = ["knife", "fork", "plates", "fridge", "table", "oven", "sink", "pantry", "chairs", "dish", "trash"]
 
     //choose word randomly
-    let randNum = Math.floor(Math.random() * word.length);
-    let choosenWord = word[randNum];
+    let randNum; 
+    let choosenWord; 
     let rightWord = [];
     let wrongWord = [];
     let underScore = [];
+    var guessCount = 10;
+    var winCount = 0;
 
-// Dom manipulation here
+    // Dom manipulation here
     let docUnderScore = document.getElementsByClassName("underScore");
     let docRightGuess = document.getElementsByClassName("rightGuess");
-    let docWrongGuess = document.getElementsByClassName("wrongGuess")
-    
+    let docWrongGuess = document.getElementsByClassName("wrongGuess");
+    let docWinCounter = document.getElementsByClassName("winCounter");
+    let docGuessCounter = document.getElementsByClassName("guessCounter");
 
-    console.log(choosenWord);
+ 
 
-    //create underscores based on length of word
-    let generateUnderscore = () => {
-        console.log("generateUnderscorrrrre");
-      for (let i = 0; i < choosenWord.length; i++) {
-        underScore.push('_');
-      }
-      return underScore;
+    function restart() {
+      rightWord = [];
+      wrongWord = [];
+      guessCount = 10;
+      randNum = Math.floor(Math.random() * word.length);
+      choosenWord = word[randNum];
+      underScore = generateUnderscore(choosenWord);
+      // generateUnderscore();
+      docUnderScore[0].innerHTML = underScore.join(' ');
+      console.log("chosen word = " + choosenWord);
     }
 
-    console.log(underScore.length);
+    //create underscores based on length of word
+    const generateUnderscore = (word) => {
+      console.log("generateUnderscorrrrre");
+      const underscores = [];
+      for (let i = 0; i < word.length; i++) {
+        underscores.push('_');
+      }
+      return underscores;
+    }
 
     //get users guess
     document.addEventListener('keypress', (event) => {
       let keyWord = String.fromCharCode(event.keyCode);
       //if guess is right...
       if (choosenWord.indexOf(keyWord) > -1) {
-      // add to right words array
+        // add to right words array
         rightWord.push(keyWord);
-      // replace the underscore with the correct letter
+        // replace the underscore with the correct letter
         underScore[choosenWord.indexOf(keyWord)] = keyWord;
         docUnderScore[0].innerHTML = underScore.join(' ');
         docRightGuess[0].innerHTML = rightWord;
-      //check to see if user word matches guesses
-        if(underScore.join('') == choosenWord) {
-          alert("You win!")
-        }
+        //check to see if user word matches guesses
+        
+        
+        if (underScore.join('') == choosenWord) {
+          alert("You win!");
+          winCount++;
+          console.log("win count = " + winCount);
+          // docRightGuess[0].innerHTML = winCounter;
+          //inner HTML the wincount here
+          docWinCounter[0].innerHTML = winCount;
+          restart();
+          // choosenWord = word[randNum];
+          // generateUnderscore();
+          // docUnderScore[0].innerHTML = underScore.join(' ');
+        } 
+      } 
+      else {
+        wrongWord.push(keyWord);
+        docWrongGuess[0].innerHTML = wrongWord;
+        guessCount--;
+        console.log("guess counter = " + guessCount);
+        docGuessCounter[0].innerHTML = guessCount;
+        
       }
-        else {
-          wrongWord.push(keyWord);
-          docWrongGuess[0].innerHTML = wrongWord;
-        }
+
+      if (guessCount == 0) {
+        alert("You did not guess correctly :(");
+        restart();
+      }
 
     });
 
-
-    docUnderScore[0].innerHTML = generateUnderscore().join(' ');
-
-    document.querySelector(".keypress").innerHTML = ("Press any key to continue");
-
-
-
-// for reset button: https://www.w3schools.com/jsref/tryit.asp?filename=tryjsref_form_reset
-
-
-
-
-    //check if guess is right
-
-    //display letter guessed by user
-
-    //if right push to "right" array
-
-    //if wrong push to "wrong" array
-
-    //list number of guesses left
-
-    //list/display/count wins
-
-    //list/display/count losses
-  
+restart();
