@@ -1,5 +1,7 @@
 # Word Guess Game
 
+https://aosilvester.github.io/WordGuessGame/
+
 ## Description
 
 **What is Word Guess Game?** Word Guess Game is an application designed to showcase basic javaScript knowledge in the form of a hangman-style computer game. The logic is done completely in javaScript
